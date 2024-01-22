@@ -16,11 +16,13 @@ public class AccountConfig {
         return args -> {
             Account accountA =  new Account(
                     "A",
-                    1000
+                    1000,
+                    100
             );
             Account accountB = new Account(
                     "B",
-                    1500
+                    1500,
+                    200
             );
             accountRepository.saveAll(
                     List.of(accountA,accountB)

@@ -39,10 +39,13 @@ public class AccountConfigTest {
         Account savedAccountA = savedAccounts.get(0);
         assertEquals("A", savedAccountA.getName());
         assertEquals(1000, savedAccountA.getSold());
+        assertEquals(100, savedAccountA.getOverdraft());
 
         Account savedAccountB = savedAccounts.get(1);
         assertEquals("B", savedAccountB.getName());
         assertEquals(1500, savedAccountB.getSold());
+        assertEquals(200, savedAccountB.getOverdraft());
+
     }
 
 }

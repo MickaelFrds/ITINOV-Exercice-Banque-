@@ -19,11 +19,17 @@ public class Account {
     private String name;
     private Integer sold;
 
+    private Integer Overdraft;
     public Account(){}
 
-    public Account(String name, Integer sold) {
+    public Account(String name, Integer sold, Integer overdraft) {
         this.name = name;
         this.sold = sold;
+        this.Overdraft = overdraft;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -45,4 +51,14 @@ public class Account {
     public void setSold(Integer sold) {
         this.sold = sold;
     }
+
+    public Integer getOverdraft() {
+        return Overdraft;
+    }
+
+    public void setOverdraft(Integer overdraft) {
+        Overdraft = overdraft;
+    }
+
+
 }

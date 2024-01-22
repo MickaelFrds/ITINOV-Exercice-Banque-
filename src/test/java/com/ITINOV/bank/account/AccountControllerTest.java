@@ -34,8 +34,8 @@ public class AccountControllerTest {
     @Test
     public void testGetAllAccounts() throws Exception {
 
-        Account accountA = new Account("A", 1000);
-        Account accountB = new Account("B", 1500);
+        Account accountA = new Account("A", 1000,100);
+        Account accountB = new Account("B", 1500,200);
         List<Account> mockAccounts = List.of(accountA, accountB);
         when(accountService.findAllAccount()).thenReturn(mockAccounts);
 
@@ -44,7 +44,9 @@ public class AccountControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("A"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].sold").value(1000))
+                .andExpect(MockMvcResultMatchers.jsonPath("[0].overdraft").value(100))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].name").value("B"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].sold").value(1500));
+                .andExpect(MockMvcResultMatchers.jsonPath("$[1].sold").value(1500))
+                .andExpect(MockMvcResultMatchers.jsonPath("[1].overdraft").value(200));
     }
 }
