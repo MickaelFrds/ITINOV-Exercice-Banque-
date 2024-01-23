@@ -69,7 +69,6 @@ public class AccountServiceTest {
         account.setId(1L);
         account.setName("TestAccount");
         account.setSold(1000);
-        accountRepository.save(account);
         Integer newSold = 1500;
         accountService.updateSoldAccount(account, newSold);
         verify(accountRepository).save(account);

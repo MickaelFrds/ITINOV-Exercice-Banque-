@@ -1,4 +1,4 @@
-package com.ITINOV.bank.withdraw;
+package com.ITINOV.bank.deposit;
 
 import com.ITINOV.bank.account.Account;
 import com.ITINOV.bank.account.AccountService;
@@ -12,21 +12,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class WithdrawServiceTest {
+public class DepositServiceTest {
 
     @Mock
-    private WithdrawRepository withdrawRepository;
+    private DepositRepository depositRepository;
 
     @Mock
     private AccountService accountService;
 
     @InjectMocks
-    private WithdrawService withdrawService;
+    private DepositService depositService;
 
     @Test
-    public void testCreateWithdraw() {
+    public void testCreateDeposit() {
         // Arrange
-        WithdrawRequest withdrawRequest = new WithdrawRequest(1L, 100);
+        DepositRequest depositRequest = new DepositRequest(1L, 100);
 
         Account testAccount = new Account();
         testAccount.setId(1L);
@@ -36,18 +36,18 @@ public class WithdrawServiceTest {
 
         when(accountService.findAccountById(1L)).thenReturn(testAccount);
 
-        Withdraw createdWithdraw = withdrawService.createWithdraw(withdrawRequest);
+        Deposit createdDeposit = depositService.createDeposit(depositRequest);
 
         verify(accountService).findAccountById(1L);
-        verify(withdrawRepository).save(any(Withdraw.class));
+        verify(depositRepository).save(any(Deposit.class));
 
-        assertEquals(100, createdWithdraw.getAmount());
-        assertEquals(testAccount, createdWithdraw.getToAccount());
+        assertEquals(100, createdDeposit.getAmount());
+        assertEquals(testAccount, createdDeposit.getToAccount());
     }
 
     @Test
-    public void testWithdrawMoney() {
-        WithdrawRequest withdrawRequest = new WithdrawRequest(1L, 100);
+    public void testDepositMoney() {
+        DepositRequest depositRequest = new DepositRequest(1L, 100);
 
         Account testAccount = new Account();
         testAccount.setId(1L);
@@ -59,7 +59,7 @@ public class WithdrawServiceTest {
 
         doNothing().when(accountService).updateSoldAccount(testAccount, 1100);
 
-        withdrawService.withdrawMoney(withdrawRequest);
+        depositService.depositMoney(depositRequest);
 
         verify(accountService).findAccountById(1L);
         verify(accountService).updateSoldAccount(testAccount, 1100);

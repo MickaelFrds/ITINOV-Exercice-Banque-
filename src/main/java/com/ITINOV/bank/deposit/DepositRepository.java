@@ -1,8 +1,8 @@
-package com.ITINOV.bank.withdraw;
+package com.ITINOV.bank.deposit;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WithdrawRepository extends JpaRepository<Withdraw,Long> {
+public interface DepositRepository extends JpaRepository<Deposit,Long> {
 }

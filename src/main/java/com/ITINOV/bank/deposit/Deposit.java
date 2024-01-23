@@ -1,30 +1,30 @@
-package com.ITINOV.bank.withdraw;
+package com.ITINOV.bank.deposit;
 
 import com.ITINOV.bank.account.Account;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "withdraw")
-public class Withdraw {
+@Table (name = "deposit")
+public class Deposit {
 
     @Id
     @SequenceGenerator(
-            name = "account_seq",
-            sequenceName = "account_seq",
+            name = "deposit_seq",
+            sequenceName = "deposit_seq",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "account_seq"
+            generator = "deposit_seq"
     )
     private Long id;
     private Integer amount;
     @ManyToOne
     private Account toAccount;
 
-    public Withdraw(){}
+    public Deposit(){}
 
-    public Withdraw(Integer amount, Account toAccount) {
+    public Deposit(Integer amount, Account toAccount) {
         this.amount = amount;
         this.toAccount = toAccount;
     }
