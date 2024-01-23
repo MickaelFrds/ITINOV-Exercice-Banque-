@@ -1,6 +1,7 @@
 package com.ITINOV.bank.deposit;
 
 import com.ITINOV.bank.account.Account;
+import com.ITINOV.bank.transaction.TransactionType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -17,6 +18,7 @@ public class DepositTest {
     @Test
     public void testDepositCreation (){
         Deposit deposit = new Deposit(50,accountTest);
+        assertEquals(TransactionType.DEPOSIT,deposit.getType());
         assertEquals(50, deposit.getAmount());
         assertEquals(accountTest, deposit.getToAccount());
     }
@@ -26,6 +28,7 @@ public class DepositTest {
         Deposit deposit = new Deposit();
         deposit.setAmount(60);
         deposit.setToAccount(accountTest);
+        assertEquals(accountTest, deposit.getToAccount());
         assertEquals(60, deposit.getAmount());
         assertEquals(accountTest, deposit.getToAccount());
 
